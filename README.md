@@ -1,4 +1,4 @@
-## Inventory Management System
+# Inventory Management System
 
 A simple Laravel App demonstrating adding, editing and removing items from an inventory. This app using mysql as a database.
 
