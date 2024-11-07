@@ -7,17 +7,20 @@ use Illuminate\Http\Request;
 
 class InventoryController extends Controller
 {
+    // Get all inventory Items
     public function index()
     {
         $items = Inventory::all();
         return view('inventory.index', compact('items'));
     }
 
+    // Create item
     public function create()
     {
         return view('inventory.create');
     }
 
+    // Store in database
     public function store(Request $request)
     {
         $request->validate([
@@ -31,18 +34,22 @@ class InventoryController extends Controller
         return redirect()->route('inventory.index')->with('success', 'Inventory item created successfully.');
     }
 
+    // View item
     public function show($id)
     {
         $item = Inventory::findOrFail($id);
         return view('inventory.show', compact('item'));
     }
 
+
+    // Edit an existing inventory item
     public function edit($id)
     {
         $item = Inventory::findOrFail($id);
         return view('inventory.edit', compact('item'));
     }
 
+    // Update in existing database
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -57,6 +64,7 @@ class InventoryController extends Controller
         return redirect()->route('inventory.index')->with('success', 'Inventory item updated successfully.');
     }
 
+    // Delete the item.
     public function destroy($id)
     {
         $item = Inventory::findOrFail($id);
